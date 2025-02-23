@@ -1,17 +1,70 @@
-*{
+
+* {
     margin: 0;
     padding: 0;
+    font-size: 24px;
+    font-family: Verdana, Arial, sans-serif;
 }
-nav {
-    margin: 0 auto;
-    display: block;
+html {
+    background: linear-gradient(183deg, #003049 10em, #669BBC 1em) no-repeat, #669BBC;
+    background-size: cover;
+    height:100%;
+    font-family: Verdana, Arial, sans-serif;
+}
 
-    padding: 20px 0 0 0;
-    text-align: center;
-    font-size: 16px;
+#main-content-container {
+    width: 300mm;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    flex-shrink: 0;
+}
 
-    ul li {
-        list-style: none;
+header {
+    /*position*/
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: row nowrap;
+    /*style*/
+    background-color: #003049;
+    gap: 0.5em;
+    padding: .5em;
+    img{
+        /*box*/
+        width: auto;
+        height: 3em;
+        flex-basis: 3em;
+    }
+    a{
+        /*position*/
+        display: flex;
+
+        /*text*/
+        font-weight: bold;
+        color: #f0f8ff;
+        text-decoration: none
+    }
+    a:hover, a:active{
+        text-decoration-line: underline;
     }
 }
-https://codepen.io/Mark_Bell00/pen/vYELmNM
+
+article{
+    background-color: #FDF0D5;
+    border-radius: 8px;
+    margin: .5em;
+    padding: 1em;
+    /*icon, username, publish date, sub*/
+    .info {
+
+    }
+    /*likes, dislike, share*/
+    .reaction
+    /*just comment*/
+    .comment
+
+    p{
+        margin
+    }
+}
