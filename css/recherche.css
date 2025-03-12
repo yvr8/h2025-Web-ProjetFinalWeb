@@ -11,7 +11,7 @@
 
 html {
     /*style*/
-    background: linear-gradient(183deg, #003049 20em, #669BBC 0) no-repeat, #669BBC;
+    background: linear-gradient(183deg, #003049 20em, #669BBC 1em) no-repeat, #669BBC;
     background-size: cover;
 }
 
@@ -76,51 +76,10 @@ article{
         border-bottom-color: #780000;
         border-bottom-width: 3px;
     }
-    .info {
-        /*position*/
-        display: flex;
-        flex-flow: row;
-        flex-wrap: nowrap;
-        gap: .5em;
-        align-items: center;
-        img{
-            height: 3.5rem;
-            width: auto;
-            border-radius: 10%;
-        }
-        ul {
-            /*text*/
-            font-weight: bold;
-            display: block;
-            padding: .5em;
-            text-decoration: none;
-            list-style-type: none;
-        }
-        li {
-            flex-shrink: 1;
-        }
-    }
-    .content {
-        pre {
-            text-wrap: auto;
-            text-align: justify;
-            text-justify: inter-word;
-            margin: .5em 0;
-            white-space: pre-line;
-        }
-        h1 {
-
-            text-wrap: auto;
-            font-weight: bold;
-            font-size: 1.5em;
-            margin: .5em 0;
-        }
-    }
-
-    .comment-textarea {
+    
+    .textarea {
         .grow-wrap {
             display: grid;
-            position: relative;
         }
         .grow-wrap::after {
             content: attr(data-replicated-value) " ";
@@ -134,7 +93,7 @@ article{
         .grow-wrap > textarea,
         .grow-wrap::after {
             border: solid #780000;
-            border-width: 0 3px 0 3px;
+            border-width: 3px;
             padding: 0.5rem;
             font: inherit;
             grid-area: 1 / 1 / 2 / 2;
@@ -144,59 +103,5 @@ article{
             border: none;
             margin: 0 3px 0 3px;
         }
-        button {
-            /*position*/
-            text-align: center;
-            display: flow;
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            /*style*/
-            border: #780000 solid 3px;
-            border-bottom: none;
-            padding: .2em .8em .2em .8em;
-        }
-    }
-    .comment-output {
-        display: flex;
-        list-style: none;
-        margin: .5em 1em 0 1em;
-        ul{
-            list-style-type: none;
-        }
-        li {
-            margin: 0 0 .5em 0;
-        }
-        pre {
-            text-wrap: auto;
-            text-align: justify;
-            text-justify: inter-word;
-
-            white-space: pre-line;
-        }
-
-
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

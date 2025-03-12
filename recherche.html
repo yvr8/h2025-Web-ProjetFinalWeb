@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/recherche.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main-content-container">
+        <header>
+            <img src="images/glados.png" alt="logo patate glados">
+            <a href="#">Accueil</a>
+            <a href="#">Groupes</a>
+            <a href="#">Recherche</a>
+            <a href="#">Publier</a>
+            <a href="#">Compte</a>
+        </header>
+        <article>
+            <div class="textarea">
+                <form>
+                <div class="grow-wrap">
+                    <textarea name="text" id="text" onInput="this.parentNode.dataset.replicatedValue = this.value" placeholder="Commentaire ..."></textarea>
+                </div>
+                </form>
+            </div>
+        </article>
+    </div>
+</body>
+</html>
