@@ -30,13 +30,21 @@ class SelectUtilisateur extends Select
         
             $pdoRequete->execute();
     
-            $user = $pdoRequete->fetch(PDO::FETCH_OBJ);
+            $result = $pdoRequete->fetch(PDO::FETCH_OBJ);
 
-            $this->user->setId($user->idUsers);
-            $this->user->setCourriel($user->Email);
-            $this->user->setMdp($user->PasswordHash);
+            if($result)
+            {
+                $this->user->setId($result->IdUsers);
+                $this->user->setCourriel($result->Email);
+                $this->user->setMdp($result->PasswordHash);
 
-            return $this->user;
+                return $this->user;
+            }
+            else{
+                return null;
+            }
+
+
     
         } catch (Exception $e) {
             error_log("Exception pdo: ".$e->getMessage());

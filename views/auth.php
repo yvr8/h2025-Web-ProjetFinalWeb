@@ -1,4 +1,3 @@
-session_
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +6,13 @@ session_
     <title>Document</title>
 </head>
 <body>
-    <form action="../controller/authentification.redirect.php" method="post">
+<?php
+    if ($_GET["invalid"])
+    {
+        echo "Mauvais mot de passe ou courriel";
+    }
+?>
+    <form action="../controller/auth2fa.redirect.php" method="post">
         <input type="text" name="email">
         <input type="password" name="mdp">
         <input type="submit" value="S'authentifier">

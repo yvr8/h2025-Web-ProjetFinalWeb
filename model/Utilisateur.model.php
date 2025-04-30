@@ -10,17 +10,17 @@ class Utilisateur
     /**
      * Setter d'Utilisateur
      */
-    public function setId(int $p)
+    public function setId(?int $p)
     {
         $this->id = $p;
     }
 
-    public function setCourriel(string $p)
+    public function setCourriel(?string $p)
     {
         $this->email = $p;
     }
 
-    public function setMdp(string $p)
+    public function setMdp(?string $p)
     {
         $this->passwordhash = $p;
     }
