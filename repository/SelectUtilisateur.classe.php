@@ -11,13 +11,13 @@ class SelectUtilisateur extends Select
 
     public function __construct(string $email)
     {
+        $connexionRead = new Connexion();
+        $this->connexionRead = $connexionRead->getConnexionBdRead();
         $this->email = $email;
         $this->user = new Utilisateur();
-        parent::__construct(); 
+        parent::__construct();
     }
-    
 
-    
     /**
      * Sélection du user selon le courriel
      */
@@ -25,42 +25,35 @@ class SelectUtilisateur extends Select
     {
         try {
             $pdoRequete = $this->connexionRead->prepare("select * from Users where email=:email");
-    
-            $pdoRequete->bindParam(":email",$this->email,PDO::PARAM_STR);
-        
+
+            $pdoRequete->bindParam(":email", $this->email, PDO::PARAM_STR);
+
             $pdoRequete->execute();
-    
+
             $result = $pdoRequete->fetch(PDO::FETCH_OBJ);
 
-            if($result)
-            {
+            if ($result) {
                 $this->user->setId($result->IdUsers);
                 $this->user->setCourriel($result->Email);
                 $this->user->setMdp($result->PasswordHash);
+                $this->user->setUsername($result->UserName);
 
                 return $this->user;
-            }
-            else{
+            } else {
                 return null;
             }
 
 
-    
         } catch (Exception $e) {
-            error_log("Exception pdo: ".$e->getMessage());
-        }        
+            error_log("Exception pdo: " . $e->getMessage());
+        }
     }
 
-
-
-    /**
-     * Sélection de plusieurs users
-     */
-
-     public function selectMultiple()
-     {
+    /*Sélection de plusieurs users*/
+    public function selectMultiple()
+    {
         null;
-     }
+    }
 }
 
 

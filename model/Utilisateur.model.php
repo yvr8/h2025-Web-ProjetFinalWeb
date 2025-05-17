@@ -5,6 +5,7 @@ class Utilisateur
     private int $id;
     private string $email;
     private string $passwordhash;
+    private string $username;
 
 
     /**
@@ -25,6 +26,10 @@ class Utilisateur
         $this->passwordhash = $p;
     }
 
+    public function setUsername(?string $p)
+    {
+        $this->username = $p;
+    }
 
     /**
      * Getter d'Utilisateur
@@ -42,5 +47,10 @@ class Utilisateur
     public function getMdp()
     {
         return $this->passwordhash;
+    }
+
+    public function getUsername()
+    {
+        return $this->username;
     }
 }

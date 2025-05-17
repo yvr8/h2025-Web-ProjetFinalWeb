@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +6,9 @@
     <title>Erreur</title>
 </head>
 <body>
-    Erreur : 
-<?php
-    echo $_GET['error'];
-?> 
+    <?php
+        echo "<h1>Erreur ".$_GET['error']."</h1>";
+        echo "<p>".$_GET['info']."</p>"
+    ?>
 </body>
 </html>

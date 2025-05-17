@@ -1,3 +1,10 @@
+<!-- <?php
+require_once __DIR__."/../controller/Session.abstract.php";
+
+$session = new SessionAuth();
+$session->getSession();
+?> -->
+
 <!doctype html>
 <html lang="en">
 <head>

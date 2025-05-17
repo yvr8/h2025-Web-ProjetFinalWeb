@@ -2,8 +2,6 @@
 
 require_once __DIR__."/../controller/Session.abstract.php";
 
-
-
 class SessionFinale extends Session
 {
     /**

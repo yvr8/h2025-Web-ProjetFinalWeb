@@ -7,7 +7,6 @@ require_once __DIR__."/../repository/SelectUtilisateur.classe.php";
 require_once __DIR__.'/../model/Utilisateur.model.php';
 
 
-if (!empty($_POST['email']) and !empty($_POST['mdp']))
 {
     if (!(filter_input(INPUT_POST,"email", FILTER_VALIDATE_EMAIL) || filter_input(INPUT_POST,"mdp",FILTER_DEFAULT)))
     {

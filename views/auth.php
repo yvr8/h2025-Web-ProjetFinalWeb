@@ -12,7 +12,8 @@
         echo "Mauvais mot de passe ou courriel";
     }
 ?>
-    <form action="../controller/auth2fa.redirect.php" method="post">
+    <!-- TODO: faire la verification d'email cote client-->
+    <form action="../controller/auth.redirect.php" method="post">
         <input type="text" name="email">
         <input type="password" name="mdp">
         <input type="submit" value="S'authentifier">

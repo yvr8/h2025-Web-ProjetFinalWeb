@@ -21,27 +21,69 @@ abstract class Session
 
     }
 
-
-    /**
-     * TODO: Affecte les valeurs nécessaires à la validation de la session selon l'étape de la session.
+    /** cree la session
+     * @param string $sessionName Nom de la session a cree
+     * @return void
      */
-    public abstract function setSession(string $p, string $remote);
+    public function setSession(string $sessionName)
+    {
+        session_name($sessionName);
 
+        if (session_status() !== PHP_SESSION_ACTIVE)
+        {
+            session_start();
+        }
 
-    /**
-     * TODO: Récupère la session active et vérifie la validité avec les variables $_SESSSION
+        session_regenerate_id();
+        $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
+        $_SESSION['proxyip'] = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? null;
+        $_SESSION['delai'] = time();
+    }
+
+    /** resume la session et de verifier sa validite
+     * @param string $sessionName Nom de la session a resume
+     * @return bool retourne si la creation de la session c'est bien effectue
      */
-    public abstract function validerSession();
+    public function getSession(string $sessionName)
+    {
+        session_name($sessionName);
 
+        if (session_status() !== PHP_SESSION_ACTIVE)
+        {
+            session_start();
+        }
 
+        // verifier si les variable sont attribue
+        if (!isset($_SESSION['ip'], $_SESSION['proxyip'], $_SESSION['delai'])
+        ) {
+            $this->supprimer();
+            return false;
+        }
 
+        // verifier ip client et ip proxy
+        if ($_SESSION['ip'] !== $_SERVER['REMOTE_ADDR'] || $_SESSION['proxyip'] !== $_SERVER['HTTP_X_FORWARDED_FOR'] ?? null) {
+            $this->supprimer();
+            return false;
+        }
+
+        // verifier le timeout
+        if (time() - $_SESSION['delai'] > 60*60*6) {
+            $this->supprimer();
+            return false;
+        }
+
+        // mettre a jour le timeout et demarrer la session
+        $_SESSION['delai'] = time();
+        return true;
+    }
     /**
      * Supprime la session active et antidate le cookie.
      */
-    public function supprimer()
+    public function supprimer(string $sessionName)
     {
-        // Une session doit être active et ce doit être la même session que celle qui est à détruire
+        session_name($sessionName);
 
+        // Une session doit être active et ce doit être la même session que celle qui est à détruire
         if (session_status() == PHP_SESSION_ACTIVE){
 
             $parametresSession = session_get_cookie_params(); //Pour antidater (détruire) le cookie
